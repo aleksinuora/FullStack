@@ -1,0 +1,69 @@
+{
+  "anecdotes": [
+    {
+      "content": "asf",
+      "votes": 0,
+      "id": "2SDE9EQ"
+    },
+    {
+      "content": "asdf",
+      "votes": 49,
+      "id": "aLJMr1h"
+    },
+    {
+      "content": "uusi",
+      "votes": 0,
+      "id": "KLytqhS"
+    },
+    {
+      "content": "kalle",
+      "votes": 0,
+      "id": "7sJDv-I"
+    },
+    {
+      "content": "uusi",
+      "votes": 0,
+      "id": "5hzsJsO"
+    },
+    {
+      "content": "palle",
+      "votes": 0,
+      "id": "z3anPvX"
+    },
+    {
+      "content": "reacti on jättekivaa",
+      "votes": 2,
+      "id": "-0VqIfA"
+    },
+    {
+      "content": "uusi anekdootti",
+      "votes": 2,
+      "id": "qFGEPM9"
+    },
+    {
+      "content": "palle",
+      "votes": 1,
+      "id": "z8OU4zM"
+    },
+    {
+      "content": "debuggaus on hauskaa",
+      "votes": 5,
+      "id": "lQEndv6"
+    },
+    {
+      "content": "lol",
+      "votes": 4,
+      "id": "2vsi7Fv"
+    },
+    {
+      "content": "kullikalle",
+      "votes": 0,
+      "id": "zeRXeLL"
+    },
+    {
+      "content": "connect-testi",
+      "votes": 11,
+      "id": "v31yKGM"
+    }
+  ]
+}
