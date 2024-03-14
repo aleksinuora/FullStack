@@ -1,0 +1,11 @@
+POST http://localhost:3003/api/blogs/
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkthbGxlIiwiaWQiOiI2MjAyOGNlYzJmMTJmYzFhNzJkOTE5MWIiLCJpYXQiOjE2NDQzNDA2NDF9.YJj_nD3DlFCv_cVEzVUU1NZgz-hRs4F9Rt8QscPlhR4
+
+{
+    "title": "testi11",
+    "author": "Timo Testaasdfgdgja",
+    "url": "htp.weew.com",
+    "userId": "62046cdddbfd9db6c5bbc4ad",
+    "likes": 6
+}
