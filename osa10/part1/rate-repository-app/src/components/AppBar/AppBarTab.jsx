@@ -1,5 +1,5 @@
 import { Link } from 'react-router-native';
-import { StyleSheet } from 'react-native-web';
+import { StyleSheet } from 'react-native';
 
 import Text from '../Text';
 
@@ -9,9 +9,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const RepositoriesTab = ({ name, target }) => {
+const RepositoriesTab = ({ name, target, onPress }) => {
   return (
-    <Link to={`/${target}`}>
+    <Link to={`/${target}`} onPress={onPress}>
       <Text
         color='light'
         backgroundColor='dark'

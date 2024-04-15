@@ -11,7 +11,7 @@ const theme = {
     backgroundBlue: '#247bd1',
     backgroundMain: '#e1e4e8',
     textLight: '#e1e4e8',
-    textError: '',
+    textError: '#d73a4a',
   },
   fontSizes: {
     body: 14,
