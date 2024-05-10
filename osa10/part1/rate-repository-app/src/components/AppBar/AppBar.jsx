@@ -1,7 +1,6 @@
 import { StyleSheet, ScrollView } from 'react-native';
 import Constants from 'expo-constants';
 
-import theme from '../../theme';
 import Text from '../Text';
 import AppBarTab from './AppBarTab';
 import useMe from '../../hooks/useMe';
@@ -11,7 +10,9 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     paddingTop: Constants.statusBarHeight,
-    backgroundColor: theme.colors.backgroundDark,
+    flex: 1,
+    flexGrow: 1,
+    width: '100%',
   },
 });
 
@@ -24,18 +25,58 @@ const AppBar = () => {
       return <AppBarTab name='loading...' target='' />;
     } else {
       if (data.me) {
-        return <AppBarTab name='SignOut' target='' onPress={signOut} />;
+        return <AppBarTab name='Sign out' target='' onPress={signOut} />;
       } else {
-        return <AppBarTab name='SignIn' target='SignIn' />;
+        return <AppBarTab name='Sign in' target='SignIn' />;
+      }
+    }
+  };
+
+  const CreateReview = () => {
+    if (loading) {
+      return <AppBarTab name='loading...' target='' />;
+    } else {
+      if (data.me) {
+        return <AppBarTab name='Create a review' target='CreateReview' />;
+      }
+    }
+  };
+
+  const SignUp = () => {
+    if (loading) {
+      return <></>;
+    } else {
+      if (data.me) {
+        return <></>;
+      } else {
+        return <AppBarTab name='Sign up' target='SignUp' />;
+      }
+    }
+  };
+
+  const MyReviews = () => {
+    if (loading) {
+      return <></>;
+    } else {
+      if (data.me) {
+        return <AppBarTab name='My reviews' target='MyReviews' />;
       }
     }
   };
 
   return (
-    <Text backgroundColor='dark' style={styles.container}>
-      <ScrollView horizontal>
+    <Text backgroundColor='dark'>
+      <ScrollView
+        horizontal
+        style={styles.container}
+        contentContainerStyle={{ flex: 1 }}
+        fillViewport='true'
+      >
         <AppBarTab name='Repositories' target='' />
+        <CreateReview />
+        <MyReviews />
         <SignIn />
+        <SignUp />
       </ScrollView>
     </Text>
   );

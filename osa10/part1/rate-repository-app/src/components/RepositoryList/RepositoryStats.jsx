@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import Text from '../Text';
+import parseThousands from '../../utils/parseThousands';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,14 +15,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-
-const parseThousands = (value) => {
-  if (value > 999) {
-    return String((value / 1000).toFixed(1)) + 'k';
-  } else {
-    return String(value);
-  }
-};
 
 const StatItem = ({ statKey, statValue }) => {
   return (

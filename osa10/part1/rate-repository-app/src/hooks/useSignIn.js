@@ -16,12 +16,10 @@ const useSignIn = () => {
       variables: { credentials: { username: username, password: password } },
 
       onCompleted: (data) => {
-        console.log('before');
         if (data) {
           authStorage.setAccessToken(data.authenticate.accessToken);
-          console.log('stored token:', authStorage.getAccessToken);
+          console.log('stored token:', authStorage.getAccessToken());
         }
-        console.log('after');
         apolloClient.resetStore();
       },
     });

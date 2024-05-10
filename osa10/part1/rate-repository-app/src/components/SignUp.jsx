@@ -7,6 +7,7 @@ import Text from './Text';
 import theme from '../theme';
 import { TextInput } from 'react-native';
 import useSignIn from '../hooks/useSignIn';
+import useSignUp from '../hooks/useSignUp';
 
 const styles = StyleSheet.create({
   container: {
@@ -39,15 +40,20 @@ const styles = StyleSheet.create({
 });
 
 const validationSchema = yup.object().shape({
-  password: yup.string().required('Password is required'),
-  username: yup.string().required('Username is required'),
+  password: yup.string().required('Password is required').min(5).max(50),
+  confirmation: yup
+    .string()
+    .required('Password confirmation is required')
+    .oneOf([yup.ref('password'), null], 'Passwords must match'),
+  username: yup.string().required('Username is required').min(5).max(30),
 });
 
-export const SignInContainer = ({ onSubmit }) => {
+export const SignUpContainer = ({ onSubmit }) => {
   const formik = useFormik({
     initialValues: {
       username: '',
       password: '',
+      confirmation: '',
     },
     validationSchema,
     onSubmit: (values) => {
@@ -86,16 +92,33 @@ export const SignInContainer = ({ onSubmit }) => {
       {formik.touched.password && formik.errors.password && (
         <Text color='error'>{formik.errors.password}</Text>
       )}
+      <TextInput
+        style={[
+          styles.input,
+          formik.touched.confirmation && formik.errors.confirmation
+            ? styles.inputError
+            : styles.inputValid,
+        ]}
+        secureTextEntry
+        placeholder='Password confirmation'
+        value={formik.values.confirmation}
+        onChangeText={formik.handleChange('confirmation')}
+      />
+      {formik.touched.confirmation && formik.errors.confirmation && (
+        <Text color='error'>{formik.errors.confirmation}</Text>
+      )}
+
       <Pressable style={styles.button} onPress={formik.handleSubmit}>
         <Text fontSize='subheading' color='light'>
-          Sign In
+          Sign up
         </Text>
       </Pressable>
     </View>
   );
 };
 
-const SignIn = () => {
+const SignUp = () => {
+  const [signUp] = useSignUp();
   const [signIn] = useSignIn();
 
   const navigate = useNavigate();
@@ -104,8 +127,9 @@ const SignIn = () => {
     const { username, password } = values;
 
     try {
-      const response = await signIn({ username, password });
+      const response = await signUp({ username, password });
       console.log(response);
+      await signIn({ username, password });
       navigate('/');
     } catch (e) {
       console.log(e);
@@ -117,7 +141,7 @@ const SignIn = () => {
     }
   };
 
-  return <SignInContainer onSubmit={onSubmit} />;
+  return <SignUpContainer onSubmit={onSubmit} />;
 };
 
-export default SignIn;
+export default SignUp;
